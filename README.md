@@ -1,4 +1,4 @@
-﻿# Facial_Emotion_Recognition
+﻿# Facial Emotion Recognition
  Creating a web app to detect emotion by looking at user's face
  
  ## Steps to run app:
