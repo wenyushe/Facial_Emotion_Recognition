@@ -1,5 +1,3 @@
 images
-models/best_model.h5
-models/vgg_model.h5
-models/eNet_model.h5
+models
 images.zip
