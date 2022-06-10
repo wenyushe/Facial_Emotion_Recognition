@@ -1,7 +1,7 @@
-﻿# Facial_Emotion_Recognition
+﻿# Facial Emotion Recognition
  Creating a web app to detect emotion by looking at user's face
  
- ## Steps to run:
+ ## Steps to run app:
  1. Setup + install dependencies
       - Clone this repository onto local drive
       - Install dependencies:
@@ -12,6 +12,12 @@
     ```
     python webapp.py
     ```
+ 
+ ## Steps to train model:
+ 1. Setup: (same as step 1 for "Steps to run app"
+ 2. Download [Facial expression recognition (FER 2013) dataset](https://www.kaggle.com/datasets/jonathanoheix/face-expression-recognition-dataset) and save as folder called "images"
+ 3. Run all cells in create_model.ipynb file to train the model
+ 4. Feel free to further improve on my model + let me know if you have any questions!
     
  ## Currently working on:
  1. improving the model accuracy
