@@ -2,8 +2,7 @@ from flask import Flask, render_template, Response
 import cv2
 import numpy as np
 from tensorflow.keras.models import model_from_json  
-from tensorflow.keras.preprocessing import image  
-import keyboard
+from tensorflow.keras.preprocessing import image
   
 
 #load model  
@@ -32,7 +31,7 @@ def gen_frames():  # generate frame by frame from camera
             # faces_detected = face_haar_cascade.detectMultiScale(gray_img, 1.32, 5)  
             faces_detected = face_haar_cascade.detectMultiScale(frame, 1.32, 5)  
 
-        
+            prev_pred = 4
             for (x,y,w,h) in faces_detected:
                 print('WORKING')
                 cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),thickness=7)  
@@ -46,11 +45,23 @@ def gen_frames():  # generate frame by frame from camera
                 print(img_pixels.shape)
                 
                 predictions = model.predict(img_pixels)  
+                print(predictions)
         
                 #find max indexed array  
-                
+
                 max_index = np.argmax(predictions[0])  
-        
+
+                # New:
+                predictions[0][3]*=1000
+                predictions[0][5]/=30
+                predictions[0][4]/=50
+                pred = np.argmax(predictions[0])
+                if (predictions[0][pred]/sum(predictions[0]) > 0.6):     
+                    max_index = pred 
+                    prev_pred = pred
+                else:
+                    max_index = prev_pred
+
                 emotions = ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']  
                 predicted_emotion = emotions[max_index]  
                 print(predicted_emotion)
