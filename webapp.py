@@ -5,21 +5,21 @@ from tensorflow.keras.models import model_from_json
 from tensorflow.keras.preprocessing import image
   
 
-#load model  
+# load model  
 model = model_from_json(open("model.json", "r").read())  
 
-#load weights  
+# load weights  
 model.load_weights('model_weights.h5')  
 
-
+# model for face detection
 face_haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')  
-
 
 app = Flask(__name__)
 
 camera = cv2.VideoCapture(0)
 
 def gen_frames():  # generate frame by frame from camera
+    max_index = 4
     while True:
         # Capture frame by frame
         success, frame = camera.read()
@@ -31,7 +31,6 @@ def gen_frames():  # generate frame by frame from camera
             # faces_detected = face_haar_cascade.detectMultiScale(gray_img, 1.32, 5)  
             faces_detected = face_haar_cascade.detectMultiScale(frame, 1.32, 5)  
 
-            prev_pred = 4
             for (x,y,w,h) in faces_detected:
                 print('WORKING')
                 cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),thickness=7)  
@@ -49,18 +48,15 @@ def gen_frames():  # generate frame by frame from camera
         
                 #find max indexed array  
 
-                max_index = np.argmax(predictions[0])  
+                # max_index = np.argmax(predictions[0])  
 
                 # New:
-                predictions[0][3]*=1000
+                predictions[0][3]*=500
                 predictions[0][5]/=30
                 predictions[0][4]/=50
                 pred = np.argmax(predictions[0])
-                if (predictions[0][pred]/sum(predictions[0]) > 0.6):     
-                    max_index = pred 
-                    prev_pred = pred
-                else:
-                    max_index = prev_pred
+                if (predictions[0][pred]/sum(predictions[0]) > 0.4):     
+                    max_index = pred
 
                 emotions = ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']  
                 predicted_emotion = emotions[max_index]  
@@ -88,7 +84,7 @@ def video_feed():
 
 @app.route('/')
 def index():
-    return render_template('./index.html')
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
