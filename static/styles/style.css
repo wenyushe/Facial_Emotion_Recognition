@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(248, 248, 248);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.header {
+    background: rgb(226, 247, 250);
+    background-blend-mode: darken;
+    background-size: cover;
+    padding-top: 0.25%;
+    padding-bottom: 1%;
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.title {
+    font-family: 'Open Sans', serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 40px;
+}
+
+.credits {
+    font-family: 'Open Sans', serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+}
