@@ -32,7 +32,6 @@ def gen_frames():  # generate frame by frame from camera
             faces_detected = face_haar_cascade.detectMultiScale(frame, 1.32, 5)  
 
             for (x,y,w,h) in faces_detected:
-                print('WORKING')
                 cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),thickness=7)  
                 # roi_gray=gray_img[y:y+w,x:x+h]          #cropping region of interest i.e. face area from  image  
                 roi_gray=frame[y:y+w,x:x+h]          #cropping region of interest i.e. face area from  image  
