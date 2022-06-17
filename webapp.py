@@ -50,7 +50,7 @@ def gen_frames():  # generate frame by frame from camera
                 # max_index = np.argmax(predictions[0])  
 
                 # New:
-                predictions[0][3]*=800
+                predictions[0][3]*=500
                 predictions[0][5]/=30
                 predictions[0][4]/=50
                 pred = np.argmax(predictions[0])
