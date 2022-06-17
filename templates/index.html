@@ -12,7 +12,8 @@
 
 <body>
 
-    <section class="title">
+    <!-- Title of web app -->
+    <header class="title">
         <div class="header">
             <h1 class="title" id="web">
                 Facial Emotion Recognition
@@ -22,41 +23,50 @@
                 by: Wenyu She
             </p>
         </div>
-    </section>
+    </header>
 
-    <section class="instructions-section">
-        <h1 class="instructions" id="about">
-            About:
-        </h1>
-
-        <p class="text">
-            This web app predicts your emotions using a computer vision algorithm
-        </p>
-
-        <hr style="height:3px; color:rgb(240, 252, 255); background-color:black">
-        
-        <h1 class="instructions" id="inst">
-            For the best results, please:
-        </h1>
-
-        <ul class="bullets">
-            <li>ensure your face is in a well-lit area</li>
-            <li>place your entire face within the camera frame</li>
-            <li>look in the general direction of the camera</li>
-        </ul>
-    </section>
-
-    </section>
-        <div class="video" id="cam">
-            <div class="flex-container">
-                <div class="row">
-                    <div class="col-lg-8  offset-lg-4">
-                        <img src="{{ url_for('video_feed') }}" width="100%">
+    <!-- Main content -->
+    <main>
+        <!-- Video -->
+        </section>
+            <div class="video" id="cam" style="float: left">
+                <div class="flex-container">
+                    <div class="row">
+                        <div class="col-lg-8  offset-lg-4">
+                            <img src="{{ url_for('video_feed') }}" width="55%">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+
+            <!-- Instructions section on the side -->
+            <div class="instructions-section">
+                <h1 class="instructions" id="about">
+                    About:
+                </h1>
+        
+                <p class="text">
+                    This web app predicts your emotions using a computer vision algorithm
+                </p>
+        
+                <hr style="height:3px; color:rgb(240, 252, 255); background-color:black">
+                
+                <h1 class="instructions" id="inst">
+                    For the best results, please:
+                </h1>
+        
+                <ul class="bullets">
+                    <li>ensure your face is in a well-lit area</li>
+                    <li>place your entire face within the camera frame</li>
+                    <li>look in the general direction of the camera</li>
+                </ul>
+            </div>
+
+        </section>
+
+        
+
+    </main>
 
 </body>
 

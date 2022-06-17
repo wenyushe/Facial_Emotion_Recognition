@@ -6,13 +6,13 @@ from tensorflow.keras.preprocessing import image
   
 
 # load model  
-model = model_from_json(open("model.json", "r").read())  
+model = model_from_json(open("./static/model.json", "r").read())  
 
 # load weights  
-model.load_weights('model_weights.h5')  
+model.load_weights('./static/model_weights.h5')  
 
 # model for face detection
-face_haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')  
+face_haar_cascade = cv2.CascadeClassifier('./static/haarcascade_frontalface_default.xml')  
 
 app = Flask(__name__)
 
@@ -50,7 +50,7 @@ def gen_frames():  # generate frame by frame from camera
                 # max_index = np.argmax(predictions[0])  
 
                 # New:
-                predictions[0][3]*=500
+                predictions[0][3]*=800
                 predictions[0][5]/=30
                 predictions[0][4]/=50
                 pred = np.argmax(predictions[0])
