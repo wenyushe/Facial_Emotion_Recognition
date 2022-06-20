@@ -14,12 +14,16 @@ model.load_weights('./static/model_weights.h5')
 # model for face detection
 face_haar_cascade = cv2.CascadeClassifier('./static/haarcascade_frontalface_default.xml')  
 
+# app
 app = Flask(__name__)
 
+# camera
 camera = cv2.VideoCapture(0)
 
-def gen_frames():  # generate frame by frame from camera
-    max_index = 4
+
+# function to generate frame by frame from camera
+def gen_frames(): 
+    max_index=4
     while True:
         # Capture frame by frame
         success, frame = camera.read()
@@ -44,17 +48,19 @@ def gen_frames():  # generate frame by frame from camera
                 
                 predictions = model.predict(img_pixels)  
                 print(predictions)
-        
-                #find max indexed array  
 
-                # max_index = np.argmax(predictions[0])  
 
-                # New:
+                # Adjustments:
+                predictions[0][0]*=5
                 predictions[0][3]*=500
-                predictions[0][5]/=30
                 predictions[0][4]/=50
-                pred = np.argmax(predictions[0])
-                if (predictions[0][pred]/sum(predictions[0]) > 0.4):     
+                predictions[0][5]/=20
+                
+                #find max indexed array  
+                pred = np.argmax(predictions[0])  
+
+                # Threshold (at least 60% confidence)
+                if (predictions[0][pred]/sum(predictions[0]) > 0.5):     
                     max_index = pred
 
                 emotions = ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']  
