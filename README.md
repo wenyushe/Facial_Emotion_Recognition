@@ -22,9 +22,7 @@
  4. Feel free to further improve on my model + let me know if you have any questions!
     
  ## Currently working on:
- 1. improving the model accuracy
- 2. using CSS to make the webapp look nicer =)
- 3. implementing a live histogram to display percentages of all emotions detected
+ - implementing a live histogram to display percentages of all emotions detected
  
  ## Resources:
  1.  [Facial expression recognition (FER 2013) dataset](https://www.kaggle.com/datasets/jonathanoheix/face-expression-recognition-dataset) from Kaggle
