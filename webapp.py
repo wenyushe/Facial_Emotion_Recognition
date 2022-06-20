@@ -51,17 +51,16 @@ def gen_frames():
 
 
                 # Adjustments:
-                predictions[0][0]*=5
                 predictions[0][3]*=500
                 predictions[0][4]/=50
-                predictions[0][5]/=20
+                predictions[0][5]/=30
                 
                 #find max indexed array  
                 pred = np.argmax(predictions[0])  
 
-                # Threshold (at least 60% confidence)
-                if (predictions[0][pred]/sum(predictions[0]) > 0.5):     
-                    max_index = pred
+                # Threshold (at least 50% confidence)
+                # if (predictions[0][pred]/sum(predictions[0]) > 0.5):     
+                max_index = pred
 
                 emotions = ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']  
                 predicted_emotion = emotions[max_index]  
