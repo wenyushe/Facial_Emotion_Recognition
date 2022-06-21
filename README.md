@@ -28,4 +28,4 @@
  1.  [Facial expression recognition (FER 2013) dataset](https://www.kaggle.com/datasets/jonathanoheix/face-expression-recognition-dataset) from Kaggle
       - 35,000+ images of faces (48x48 pixel jpgs) sorted into folders by emotion
  2. haarcascade_frontalface_default.xml from [OpenCV GitHub](https://github.com/kipr/opencv)
-      - Software developed as part of OpenCV. Used to detect faces with camera 
+      - OpenCV algorithm used to detect faces through camera 
