@@ -1,3 +1,5 @@
 images
 models
 images.zip
+.vscode
+__pycache__

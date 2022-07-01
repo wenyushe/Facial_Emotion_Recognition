@@ -51,7 +51,7 @@ def gen_frames():
 
 
                 # Adjustments:
-                predictions[0][3]*=500
+                predictions[0][3]*=400
                 predictions[0][4]/=50
                 predictions[0][5]/=30
                 
@@ -80,11 +80,9 @@ def gen_frames():
     # Destroy all the windows
     cv2.destroyAllWindows()
 
-@app.route('/video_feed')
+@app.route('/video_feed', methods=["GET", "POST"])
 def video_feed():
-    #Video streaming route. Put this in the src attribute of an img tag
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
-
 
 @app.route('/')
 def index():
