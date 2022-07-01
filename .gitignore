@@ -3,3 +3,4 @@ models
 images.zip
 .vscode
 __pycache__
+.ebextensions
