@@ -15,7 +15,7 @@ model.load_weights('./static/model_weights.h5')
 face_haar_cascade = cv2.CascadeClassifier('./static/haarcascade_frontalface_default.xml')  
 
 # app
-application = Flask(__name__)
+app = Flask(__name__)
 
 # camera
 camera = cv2.VideoCapture(0)
@@ -80,14 +80,14 @@ def gen_frames():
     # Destroy all the windows
     cv2.destroyAllWindows()
 
-@application.route('/video_feed')
+@app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@application.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    app.run(debug=True)
